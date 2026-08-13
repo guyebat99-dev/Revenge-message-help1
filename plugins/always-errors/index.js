@@ -1,0 +1,1 @@
+(function(e){return Object.defineProperty(e,Symbol.toStringTag,{value:`Module`}),e.default=plugin({start(){throw Error(`oops!`)}}),e})({});

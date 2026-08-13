@@ -1,0 +1,1 @@
+(function(e){return Object.defineProperty(e,Symbol.toStringTag,{value:`Module`}),e.default=plugin({start(){console.log(`[example-dependent] started (example-library started first)`)},stop(){console.log(`[example-dependent] stopped`)}}),e})({});
