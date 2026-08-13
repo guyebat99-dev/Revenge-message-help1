@@ -23,6 +23,16 @@ jobs:
       - name: Build plugins
         run: bun --bun run build
 
+      - name: Debug - list output structure
+        run: |
+          echo "--- repo root ---"
+          ls -la
+          echo "--- plugins dir ---"
+          find plugins -maxdepth 3 -type d
+          echo "--- CLI help ---"
+          bun --bun run revenge-plugin generate-index --help || true
+          bun --bun run revenge-plugin build --help || true
+
       - name: Generate repository index
         run: bun --bun run generate-index -- --dist dist --base-url https://guyebat99-dev.github.io/Revenge-message-help1/
 
