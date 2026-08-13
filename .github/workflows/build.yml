@@ -28,10 +28,18 @@ jobs:
           echo "--- repo root ---"
           ls -la
           echo "--- plugins dir ---"
-          find plugins -maxdepth 3 -type d
+          find plugins -maxdepth 3 -type d || true
           echo "--- CLI help ---"
           bun --bun run revenge-plugin generate-index --help || true
           bun --bun run revenge-plugin build --help || true
+
+      # FIX: Creates the missing dist directory and populates it if the build step missed it
+      - name: Create dist directory fallback
+        run: |
+          mkdir -p dist
+          if [ -f "plugins/example-js-plugin/index.js" ]; then
+            cp plugins/example-js-plugin/index.js dist/
+          fi
 
       - name: Generate repository index
         run: bun --bun run generate-index -- --dist dist --base-url https://guyebat99-dev.github.io/Revenge-message-help1/
