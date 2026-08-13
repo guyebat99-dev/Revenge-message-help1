@@ -23,10 +23,20 @@ jobs:
       - name: Build plugins
         run: bun --bun run build
 
+      - name: Collect dist
+        run: |
+          mkdir -p dist
+          for plugin in plugins/*/; do
+            name=$(basename "$plugin")
+            mkdir -p "dist/$name"
+            cp "$plugin/manifest.json" "dist/$name/manifest.json"
+            cp "$plugin/build/js/index.js" "dist/$name/index.js"
+          done
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: plugins/example-js-plugin/build/
+          path: dist/
 
   deploy:
     needs: build
