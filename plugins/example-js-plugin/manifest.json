@@ -3,7 +3,7 @@
 	"id": "com.yourname.message-tools",
 	"name": "Message Tools",
 	"description": "Text size formatting and Discord timestamp inserter.",
-	"author": "Guyebatdev",
+	"author": "guyebatdev",
 	"version": "1.0.0",
 	"dependencies": {
 		"revenge.api": {
