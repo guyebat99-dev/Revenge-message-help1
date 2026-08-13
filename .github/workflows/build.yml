@@ -21,10 +21,10 @@ jobs:
         run: bun install
 
       - name: Build plugins
-        run: bun --bun run build
+        run: bun run build
 
-      - name: Package plugins (generates dist + index.json)
-        run: bun run package
+      - name: Generate repository index
+        run: bun run generate-index
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
