@@ -23,6 +23,9 @@ jobs:
       - name: Build plugins
         run: bun --bun run build
 
+      - name: Show build output
+        run: find plugins -type f | sort
+
       - name: Collect dist
         run: |
           mkdir -p dist
@@ -30,8 +33,11 @@ jobs:
             name=$(basename "$plugin")
             mkdir -p "dist/$name"
             cp "$plugin/manifest.json" "dist/$name/manifest.json"
-            cp "$plugin/build/js/index.js" "dist/$name/index.js"
+            cp "$plugin/build/js/index.js" "dist/$name/index.js" 2>/dev/null || true
           done
+
+      - name: Show dist
+        run: find dist -type f | sort
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
