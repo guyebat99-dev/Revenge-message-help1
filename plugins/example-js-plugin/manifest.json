@@ -2,5 +2,5 @@
 	"name": "Message Tools",
 	"description": "Text size formatting and Discord timestamp inserter.",
 	"authors": [{"name": "guyebat99", "id": "0"}],
-	"main": "index.js"
+	"main": "js/index.tsx"
 }
